@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div id="chartName">
+
+    </div>
+    <div id="disclaimer">
+
+    </div>
+    <script>
+        // Create a new XMLHttpRequest object and make a GET request
+        // var xhr = new XMLHttpRequest();
+        // xhr.open("GET", "https://api.coindesk.com/v1/bpi/currentprice.json", true);
+        // xhr.onreadystatechange = function () {
+        //     if (xhr.readyState === 4 && xhr.status === 200) {
+        //         // xhr.responseText);
+        //         console.log(JSON.parse(xhr.responseText));
+        //     }
+        // };
+        // xhr.send();
+
+        $.ajax({
+            url: "https://api.coindesk.com/v1/bpi/currentprice.json",
+            method: "GET",
+            success: function (response) {
+                console.log(response);
+                $("#chartName").html(response.chartName);
+                $("#disclaimer").html(response.disclaimer);
+            },
+        });
+
+
+    </script>
+</body>
+
+</html>

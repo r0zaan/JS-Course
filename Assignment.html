@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!----CSS-->
+        <style> 
+            h1{
+                background-color: blue;
+                max-width: 100px;
+                text-align: center;
+                
+            }
+        </style>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin 
+        src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <h1> JS class</h1> 
+        <div id="assignment"></div>
+         <!---Javascript-->
+        <script>
+
+     const students = [{
+        name: "KP", score: 65},{
+        name: "Baburam", score: 96,},{
+        name: "Prachanda", score: 78}, {
+        name: "Shere", score: 77},{
+        name: "Madhav", score: 49
+            }];
+
+        console.log(" ------Total scores of student--------", students); //array of student
+
+        setScore(students); // called function
+      
+        var result = [];
+        function setScore (students) {
+        students.forEach(function (student, i) {
+            if (student.score >= 90) {
+            student["grade"] = "A";
+            } else if (student.score >= 80) {
+            student["grade"] = "B";
+            } else if (student.score >= 60) {
+            student["grade"] = "C";
+            } else if (student.score >= 50) {
+            student["grade"] = "D";
+            } else if (student.score >= 32) {
+            student["grade"] = "E";
+            } else {
+            student["grade"] = "F";
+            }
+        });
+        console.log("------------The scores with grade divition---------",students);
+        }
+                
+                
+        </script>
+    </body>
+</html>

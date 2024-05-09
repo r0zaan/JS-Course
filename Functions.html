@@ -1,0 +1,38 @@
+<html>
+
+
+<body>
+    <h3 style="text-align: center">
+        Basics of JavaScript : Functions
+    </h3>
+
+
+    <script>
+        var addedValue = AnimationalMethod(5, 10, add);
+        console.log(addedValue);
+
+        // const add = function(first,second, third){
+        //     console.log("2nd way")
+        // }
+        // const add = (first, second, third) => {
+        //     console.log("3rd way");
+        // };
+
+        // console.log(x);
+
+
+
+
+
+        function AnimationalMethod(first, second, add) {
+            var addedValue = add(first, second);
+            return addedValue;
+        }
+
+        function add(first, second) {
+            return first + second;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>User Management</h1>
+        <h3>Total User : <span id="total-user"></span></h3>
+        <div>
+            <input type="text" id="name" required placeholder="name">
+            <input type="text" id="job" required>
+            <button id="add-user">Add User</button>
+        </div>
+        <div>
+            <button id="get-users">Get Users</button>
+
+        </div>
+        <div id="users">
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

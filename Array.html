@@ -1,0 +1,93 @@
+<html>
+
+<body>
+    TESTING
+    <!-- <script src="./script.js"></script> -->
+    <script>
+
+        const peoples = [{
+            name: "abc",
+            age: 15,
+        }, {
+            name: "abc 2",
+            age: 16,
+        }, {
+            name: "abc 3",
+            age: 18,
+        }, {
+            name: "abc 4",
+            age: 17,
+        }];
+
+        // var newPeoples = peoples.map((people) => {
+        //     if (people.age >= 16) {
+        //         return people;
+        //     }
+        //     return null;
+
+        // });
+
+        // var newPeoples = peoples.filter((people) => {
+        //     if (people.age % 2 == 0) {
+        //         return people;
+        //     }
+
+        // });
+
+
+        // console.log(peoples);
+        // console.log(newPeoples);
+
+
+
+
+        // const numbers = [1, 2, 3, 4, 5];
+
+        // var newNumber = numbers.reduce((acc, value) => acc + value)
+
+        var person = {
+            first_name: "Rojan",
+            last_name: "Tamrakar",
+            age: "25",
+            isMale: true,
+            work: {
+                place: "Ltech",
+                exp: 3,
+                location: {
+                    name: "Kathmandu",
+                    google_coodinates: "01232323"
+                }
+            },
+            exp: [
+                1, 2, 3, 4, 5, 6, 7, 8,
+            ],
+        };
+        // // console.log(person.work?.location?.google_coodinates);
+        // if (person.work.location) {
+        //     console.log(person.work.location.google_coodinates);
+        // } else {
+        //     console.log("Location not found")
+        // }
+
+
+        // for (let key in person) {
+
+        //     if (key == "work") {
+        //         for (let work in person[key]) {
+        //             console.log(work + ': ' + person[key][work]);
+        //         }
+        //     } else {
+        //         console.log(key + ': ' + person[key]);
+        //     }
+        // }
+        let keys = Object.keys(person);
+        let values = Object.values(person);
+        let entries = Object.entries(person);
+        console.log(keys);
+        console.log(values);
+        console.log(entries);
+
+    </script>
+</body>
+
+</html>

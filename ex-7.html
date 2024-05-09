@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="top-most">
+        <div class="middle-most">
+            <div class="bottom-most">
+                test
+            </div>
+        </div>
+
+    </div>
+
+    <div class="top-most">
+        <ul>
+            <li class="li-new">test</li>
+            <li>test 1</li>
+            <li>test 2</li>
+            <li>test 3</li>
+        </ul>
+
+    </div>
+    <script>
+        var bottomMost = document.querySelector(".bottom-most");
+        var MiddleMost = document.querySelector(".middle-most");
+        // console.log(bottomMost.parentNode.parentNode);
+        // console.log(MiddleMost.parentNode.parentNode);
+
+
+        var liNew = document.querySelector(".li-new");
+        liNew.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.color = "gray"
+        console.log(liNew.nextElementSibling.style.color);
+    </script>
+</body>
+
+</html>

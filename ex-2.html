@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="addImage">
+        Add Image
+    </button>
+    <div id="image-container"></div>
+    <a href="https://picsum.photos/200/300" target="_blank">Click here for image</a>
+    <a href="https://picsum.photos/200/300" target="_blank">Click here for image</a>
+    <a href="https://picsum.photos/200/300" target="_blank">Click here for image</a>
+    <a href="https://picsum.photos/200/300" target="_blank">Click here for image</a>
+    <a href="https://picsum.photos/200/300" target="_blank">Click here for image</a>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var addButton = document.getElementById("addImage");
+
+            addButton.addEventListener("click", function () {
+                var newImage = document.createElement("img");
+
+                newImage.src = `https://picsum.photos/200/300`;
+                newImage.style.height = "300px";
+                var imageContainer = document.getElementById("image-container");
+                imageContainer.appendChild(newImage);
+            })
+            console.log(document.querySelectorAll("a"));
+            var aTags = document.querySelectorAll("a");
+            for (let i = 0; i < aTags.length; i++) {
+                console.log(aTags[i].removeAttribute("href"));
+                console.log(aTags[i]);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

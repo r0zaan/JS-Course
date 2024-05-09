@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<body>
+    <div class="hero-container">
+        <h2 id="hero-heading" data-name="hero" class="heading-two">Hero banner</h2>
+    </div>
+    <button class="new-button">
+        Test button
+    </button>
+
+    <script>
+        var button = document.querySelector(".new-button");
+        var heroHeading = document.querySelector("#hero-heading");
+        var eventHandler = button.addEventListener("click", function () {
+            if (heroHeading.style.color == "gray") {
+                heroHeading.style.color = "black";
+            } else {
+                heroHeading.style.color = "gray";
+            }
+
+        });
+        button.removeEventListener('click', eventHandler);
+
+    </script>
+
+</body>
+
+</html>

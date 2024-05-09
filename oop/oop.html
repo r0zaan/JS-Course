@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP</title>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const apiBaseURL = `https://reqres.in/api/`;
+
+        const getUserURL = apiBaseURL + "users";
+
+        class User {
+            constructor(id, first_name, last_name, email, avatar) {
+                this.id = id;
+                this.first_name = first_name;
+                this.last_name = last_name;
+                this.email = email;
+                this.avatar = avatar;
+            }
+
+
+            getFullName() {
+                return `${this.first_name} ${this.last_name}`;
+            }
+
+            checkIfEmailisGoogle() {
+                if (this.email) {
+                    return `${this.email}`;
+                }
+
+            }
+        }
+        function getUsers() {
+            $.ajax({
+                url: getUserURL,
+                type: "GET",
+                success: function (response) {
+                    if (response) {
+                        console.table(response.data);
+                        if (response.data.length > 0) {
+                            response.data.forEach(function (user) {
+                                let userObject = new User(user.id, user.first_name, user.last_name, user.email, user.avatar)
+                                // console.log(userObject.getFullName());
+                                console.log(userObject);
+                                // console.log(userObject.checkIfEmailisGoogle())
+                            })
+                        }
+
+                    }
+                },
+                error: function (error) {
+                    console.error("Error on Get Users API : " + error);
+                },
+            });
+        }
+
+        getUsers()
+
+
+    </script>
+
+</body>
+
+</html>

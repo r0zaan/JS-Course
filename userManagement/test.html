@@ -1,0 +1,753 @@
+<style>
+    .session-agenda-holder-box {
+        position: relative;
+    }
+
+    .session-agenda-holder-box .nav-tabs {
+        border-bottom: 1px solid #868686;
+
+    }
+
+    #session-listing-iframe .mt-medium.mb-medium {
+        margin: 0 !important;
+    }
+
+    .session-agenda-holder-box button.owl-prev {
+        position: absolute;
+        left: -23px;
+        top: 37%;
+        transform: translateY(-50%);
+        background-color: white !important;
+        width: 20px;
+        height: 20px;
+        border-radius: 100% !important;
+        color: #000 !important;
+    }
+
+    .session-agenda-holder-box button.owl-next {
+        position: absolute;
+        right: -23px;
+        top: 37%;
+        transform: translateY(-50%);
+        background-color: white !important;
+        width: 20px;
+        height: 20px;
+        border-radius: 100% !important;
+        color: #000 !important;
+    }
+
+    .session-agenda-holder-box .owl_1.owl-carousel {
+        padding-bottom: 15px;
+    }
+
+    .session-agenda-holder-box .item {
+        display: flex;
+        justify-content: center;
+    }
+
+    .session-agenda-holder-box .item li a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 15px;
+        background-color: transparent;
+        border-radius: 8px;
+        color: #000 !important;
+        flex-wrap: wrap;
+        text-align: center;
+        font-size: 15px;
+        text-decoration: none !important;
+        font-weight: 700;
+    }
+
+    .session-agenda-holder-box .item li.active a {
+        background-color: #e64626;
+        color: #fff !important;
+    }
+
+    .session-agenda-holder-box .tab-content {
+        margin: 20px;
+    }
+
+    .session-agenda-holder-box .tab-content .bottom-info {
+        padding: 15px;
+        background-color: #fff;
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 20px;
+        border-radius: 19px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        min-height: 70px;
+        position: relative;
+    }
+
+    .session-agenda-holder-box .left-info {
+        width: 80px;
+    }
+
+    .session-agenda-holder-box .start-end-time {
+        font-size: 14px;
+        text-align: center;
+        font-weight: 600;
+        line-height: 20px;
+    }
+
+    .session-agenda-holder-box .right-info {
+        text-align: left;
+        border-left: 1px solid #868686;
+        padding-left: 15px;
+    }
+
+    .session-title {
+        color: #000;
+    }
+
+    .listing-details-wrap {
+        display: flex;
+
+    }
+
+    .listing-details-wrap .hosted-by a {
+        color: #000;
+    }
+
+    .listing-details-wrap a:hover {
+        text-decoration: none;
+
+    }
+
+    .listing-details-wrap .listing-img {
+        margin-bottom: 30px;
+    }
+
+    .listing-details-wrap .listing-img img {
+        width: 100%;
+    }
+
+    @media (max-width: 767px) {
+        .listing-details-wrap .listing-img {
+            margin-right: 0;
+            margin-bottom: 30px;
+        }
+    }
+
+    .listing-details-wrap .listing-details {
+        flex: 1;
+    }
+
+    .listing-details-wrap .listing-name h3,
+    .listing-details-wrap .listing-name {
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    .listing-details-wrap .hosted-by {
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 25px;
+        font-weight: inherit;
+        width: fit-content;
+        line-height: 1;
+    }
+
+    @media (max-width: 767px) {
+        .listing-details-wrap .listing-name {
+            font-size: 20px;
+        }
+
+        .listing-details-wrap .hosted-by {
+            font-size: 15px;
+        }
+    }
+
+    .listing-details-wrap .detail-title {
+        margin-bottom: 10px;
+        white-space: nowrap;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .listing-details-wrap .detail-and-title {
+        /* display: flex; */
+        margin-bottom: 15px;
+        overflow-wrap: anywhere;
+    }
+
+    .listing-details-wrap .detail-and-title p {
+        display: block;
+        font-size: 16px;
+    }
+
+    .listing-details-wrap .detail-and-title p a {
+        color: #e64626;
+    }
+
+    @media (max-width: 767px) {
+        .listing-details-wrap .detail-and-title {
+            flex-flow: column;
+        }
+    }
+
+    .listing-details-wrap .detail-and-title a {
+        color: #000;
+        text-decoration: underline;
+    }
+
+    .listing-details-wrap .description {
+        padding: 0 0 20px;
+    }
+
+    @media only screen and (max-width: 992px) {
+        .listing-details-wrap {
+            display: block;
+
+        }
+    }
+
+    .badge-register {
+        background: #e64626 !important;
+        width: max-content;
+        padding: 4px 10px 5px !important;
+        margin-top: 5px;
+    }
+
+    .register-button,
+    .register-button:focus,
+    .register-button:focus,
+    .register-button:hover {
+        color: #fff;
+        background-color: #e64626 !important;
+        border-color: #e64626 !important;
+    }
+
+    .show-if-registered {
+        color: var(--copy);
+        font-family: 'Apercu';
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 25px;
+    }
+</style>
+
+<style>
+    .single-day-session-agenda .inner-detail {
+        display: flex;
+    }
+
+    @media (max-width: 767px) {
+        .single-day-session-agenda .inner-detail {
+            flex-flow: column;
+        }
+    }
+
+    .single-day-session-agenda .inner-detail .detail-name {
+        width: 180px;
+    }
+
+    .single-day-session-agenda {
+        max-width: 950px;
+
+    }
+
+    .single-day-session-agenda .session-name {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    .single-day-session-agenda .inner-session {
+        display: flex;
+        flex-flow: nowrap;
+        justify-content: space-between;
+    }
+
+    /*@media (max-width: 767px) {
+        .single-day-session-agenda .inner-session {
+            flex-flow: column;
+        }
+
+        .single-day-session-agenda .reg-button-column {
+            margin-top: 20px;
+        }
+    }*/
+
+    .single-day-session-agenda .session {
+        border-bottom: 1px solid #dcdcdc;
+        padding: 25px 0;
+    }
+
+    .loader-icon .icon-spinner {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        padding-top: 10%;
+        z-index: 9999;
+        margin: 0 auto;
+        height: 100%;
+        width: 100%;
+        background: #aaaaaab8;
+        color: #000000;
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .load-animate {
+        -animation: spin .7s infinite linear;
+        -webkit-animation: spin2 .7s infinite linear;
+    }
+
+    @-webkit-keyframes spin2 {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        from {
+            transform: scale(1) rotate(0deg);
+        }
+
+        to {
+            transform: scale(1) rotate(360deg);
+        }
+    }
+</style>
+<script>
+    var session_array = [];
+</script>
+
+<!-- <div class="single-day-session-agenda"> -->
+
+<div class="session-agenda-holder-box">
+    <div class="loader-icon">
+        <span class="icon-spinner" id="icon-session-loader"><i class="fa fa-spinner load-animate"></i></span>
+    </div>
+    <div class="show-if-not-registered">
+        <ul class="nav nav-tabs">
+            <div class="owl_1 owl-carousel owl-theme">
+                <!-- <div class="item">
+                <li class="active"><a data-toggle="tab" href="#home">23/08 <br> Wed</a></li>
+            </div>
+            <div class="item">
+                <li><a data-toggle="tab" href="#menu1">24/08 <br> Thurs</a></li>
+            </div>
+            <div class="item">
+                <li><a data-toggle="tab" href="#menu2">25/08 <br> Fri</a></li>
+            </div>
+            <div class="item">
+                <li><a data-toggle="tab" href="#menu3">26/08 <br> Sat</a></li>
+            </div>
+            <div class="item">
+                <li><a data-toggle="tab" href="#menu4">27/08 <br> Sun</a></li>
+            </div> -->
+            </div>
+        </ul>
+        <div class="tab-content">
+
+            <!-- <div class="testing">{{startDate}}</div> -->
+            <!-- <div class="sesion-name">{{name}}</div> -->
+            <!-- <div id="home" class="tab-pane fade in active">
+            <div class="bottom-info">
+                <div class="left-info">
+                    <div class="start-end-time">12:00 PM - 1:00 PM</div>
+                </div>
+                <div class="right-info">
+                    <a class="session-title" href="#">The Great Hall, Quadrangle University Ave, University of
+                        Sydney</a>
+                </div>
+            </div>
+            <div class="bottom-info">
+                <div class="left-info">
+                    <div class="start-end-time">9:30 am - 10:00 am</div>
+                </div>
+                <div class="right-info">
+                    <a class="session-title" href="#">The Great Hall, Quadrangle University Ave, University of
+                        Sydney</a>
+                </div>
+            </div>
+            <div class="bottom-info">
+                <div class="left-info">
+                    <div class="start-end-time">11:30 am - 12:00 am</div>
+                </div>
+                <div class="right-info">
+                    <a class="session-title" href="#">The Great Hall, Quadrangle University Ave, University of
+                        Sydney</a>
+                </div>
+            </div>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <div class="bottom-info">
+                <div class="left-info">
+                    <div class="start-end-time">9:30 am - 10:00 am</div>
+                </div>
+                <div class="right-info">
+                    <a class="session-title" href="#">The Great Hall, Quadrangle University Ave, University of
+                        Sydney</a>
+                </div>
+            </div>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <div class="bottom-info">
+                <div class="left-info">
+                    <div class="start-end-time">12:00 PM - 1:00 PM</div>
+                </div>
+                <div class="right-info">
+                    <a class="session-title" href="#">The Great Hall, Quadrangle University Ave, University of
+                        Sydney</a>
+                </div>
+            </div>
+            <div class="bottom-info">
+                <div class="left-info">
+                    <div class="start-end-time">9:30 am - 10:00 am</div>
+                </div>
+                <div class="right-info">
+                    <a class="session-title" href="#">The Great Hall, Quadrangle University Ave, University of
+                        Sydney</a>
+                </div>
+            </div>
+            <div class="bottom-info">
+                <div class="left-info">
+                    <div class="start-end-time">11:30 am - 12:00 am</div>
+                </div>
+                <div class="right-info">
+                    <a class="session-title" href="#">The Great Hall, Quadrangle University Ave, University of
+                        Sydney</a>
+                </div>
+            </div>
+        </div>
+        <div id="menu3" class="tab-pane fade">
+            <div class="bottom-info">
+                <div class="left-info">
+                    <div class="start-end-time">11:30 am - 12:00 am</div>
+                </div>
+                <div class="right-info">
+                    <a class="session-title" href="#">The Great Hall, Quadrangle University Ave, University of
+                        Sydney</a>
+                </div>
+            </div>
+        </div>
+        <div id="menu4" class="tab-pane fade">
+            <div class="bottom-info">
+                <div class="left-info">
+                    <div class="start-end-time">12:00 PM - 1:00 PM</div>
+                </div>
+                <div class="right-info">
+                    <a class="session-title" href="#">The Great Hall, Quadrangle University Ave, University of
+                        Sydney</a>
+                </div>
+            </div>
+        </div> -->
+        </div>
+    </div>
+    <div class="show-if-registered hidden">
+        <p>
+            We have found an existing registration for this event using <span class="email-here"></span>.
+            Please review your registration details via <a class="your-list">Your schedule</a>.
+        </p>
+    </div>
+</div>
+
+{% set length = sessions|length %}
+{% for session in sessions %}
+
+{% set name = session.name %}
+{% set id = session.id %}
+{% set location = session.location|split("|") %}
+{% set start = session.start_time|lower %}
+{% set end = session.end_time|lower %}
+
+
+
+
+<script>
+    var session = {
+        id: '{{ session.id }}',
+        name: '{{ session.name }}',
+        location: '{{ session.location }}',
+        start_date: '{{ session.date }}',
+        start_date_month: '{{ session.date }}',
+        start_time: "{{ session.start_time}}",
+        end_time: "{{ session.end_time}}",
+        chronus_integration: "{{ session.c_52749 }}",
+        chronus_program_ID: "{{ session.c_52951 }}",
+    };
+    session_array.push(session);
+
+</script>
+{% endfor %}
+
+
+<!-- </div> -->
+
+<script>
+    const sortByDate = arr => {
+        const sorter = (a, b) => {
+            return new Date(a.start_date).getTime() - new Date(b.start_date).getTime();
+        }
+        arr.sort(sorter);
+    };
+    // sortByDate(session_array);
+
+    // this gives an object with dates as keys
+    const groups = session_array.reduce((groups, session) => {
+        const date = session.start_date;
+        console.log(date);
+        if (!groups[date]) {
+            groups[date] = [];
+        }
+        groups[date].push(session);
+        return groups;
+    }, {});
+
+    // Edit: to add it in the array format instead
+    const sessionArrays = Object.keys(groups).map((date) => {
+        return {
+            date,
+            sessions: groups[date]
+        };
+    });
+    console.log(sessionArrays);
+    $.each(sessionArrays, function (index, sessionArray) {
+        console.log(sessionArray.date);
+        $('.owl_1').append(`<div class="item">
+            <li ${index == 0 ? `class="active"` : ` `}><a data-toggle="tab" href="#tab-${index}">${sessionArray.date}</a></li>
+        </div>`);
+        var tabContent = `<div id="tab-${index}" class="tab-pane fade ${index == 0 ? `in active"` : ` `}">`
+
+        $.each(sessionArray.sessions, function (indexTwo, session) {
+            tabContent += ` <div class="bottom-info">          
+                <div class="left-info">
+                    <div class="start-end-time">${session.start_time} - ${session.end_time}</div>
+                </div>
+                <div class="right-info">
+                    <p class="session-title" href="" data-session-id="${session.id}">${session.name}<p>
+                    <a class="btn btn-primary register-button" data-badge-session-id="${session.id}" href="" data-session-id="${session.id}" data-chronus-integration="${session.chronus_integration}" data-chronus-program-id="${session.chronus_program_ID}">Register</a>
+                </div>
+            </div>`
+        });
+        tabContent += ` </div >`;
+        $('.tab-content').append(tabContent);
+
+    });
+    // <span class="badge badge-register hidden" data-badge-session-id="${session.id}">Already Registered</span>
+    $(document).ready(function () {
+
+        var url = window.location.href;
+        url = url.split("/");
+        url.pop();
+        url = url.join("/") + "/begin";
+        console.log(url);
+        $(".register-button").prop("href", url);
+    });
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://assets.swoogo.com/themes/644642d5e3ba1/owl.carousel.min.css">
+<link rel="stylesheet" href="https://assets.swoogo.com/themes/644642d5e3ba1/owl.theme.default.min.css">
+<script src="https://assets.swoogo.com/themes/644642d5e3ba1/owl.carousel.min.js"></script>
+<script>
+
+    $(' .owl_1').owlCarousel({
+        loop: false,
+        margin: 2,
+        responsiveClass: true, autoplayHoverPause: true,
+        autoplay: false,
+        slideSpeed: 400,
+        paginationSpeed: 400,
+        autoplayTimeout: 3000,
+        navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+        responsive: {
+            0: {
+                items: 3,
+                nav: true,
+                loop: false
+            },
+            600: {
+                items: 3,
+                nav: true,
+                loop: false
+            },
+            768: {
+                items: 3,
+                nav: true,
+                loop: false
+            }
+        }
+    })
+    $(document).ready(function () {
+        var li = $(".owl-item li ");
+        $(".owl-item li").click(function () {
+            li.removeClass('active');
+        });
+    });
+
+    function openTab(date) {
+
+
+        var i, tabcontent, tabLabels;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        $(".tabLabel.active").removeClass("active")
+
+        console.log("label-" + date)
+        var activeTab = document.getElementsByClassName(" label-" + date);
+        activeTab[0].classList.add("active");
+        //activeTab[0].style.backgroundColor = "var(--primary)";
+        // activeTab[0].style.backgroundColor = "var(--primary)";
+
+
+        var toshow = document.getElementsByClassName(date);
+
+        for (i = 0; i < toshow.length; i++) {
+            toshow[i].style.display = "block";
+        }
+
+
+    }
+
+    $(document).on("click", ".register-button", function (e) {
+        e.preventDefault();
+        var regId = $(parent.document).find("#regID").text();
+        var chronusIntegration = $(this).data('chronus-integration');
+        if ($(this).data('chronus-program-id')) {
+            // var programID = MapChronosProgram.find(element => element.name == $(this).data('chronus-program-id')).id;
+            var programID = "";
+        } else {
+            var programID = "";
+        }
+        console.log(programID);
+        console.log(chronusIntegration);
+        var href = parent.window.location.href;
+        if (!$.isNumeric(regId)) {
+            localStorage.setItem('redirectUrlAfterLogin', href);
+            window.parent.location.href = `https://welcome.sydney.edu.au/${masterURL}/signup`;
+        } else {
+            if (chronusIntegration && programID) {
+                parent.addUser($(this).data('session-id'), href, $('#icon-session-loader'), chronusIntegration, programID);
+            } else {
+
+                parent.addUser($(this).data('session-id'), href, $('#icon-session-loader'));
+            }
+        }
+    });
+
+    var MapChronosProgram = [
+        {
+            'id': 'P1',
+            'name': 'Business Peer Mentoring Program'
+        },
+        {
+            'id': 'P2',
+            'name': 'Dalyell Professional Mentoring Program'
+        },
+        {
+            'id': 'P3',
+            'name': 'Law Peer Mentoring'
+        },
+        {
+            'id': 'P4',
+            'name': 'Faculty of Arts and Social Sciences Postgraduate Mentoring'
+        },
+        {
+            'id': 'P5',
+            'name': '2023 FASS Undergraduate Mentoring Program'
+        },
+        {
+            'id': 'P6',
+            'name': 'Science Undergraduate Peer Mentoring Program'
+        },
+        {
+            'id': 'P7',
+            'name': 'Speak and Connect'
+        },
+        {
+            'id': 'P8',
+            'name': 'ENGO Undergraduate Peer Mentoring'
+        },
+        {
+            'id': 'P9',
+            'name': 'FASS UG International Peer Mentoring'
+        },
+        {
+            'id': 'P10',
+            'name': 'Faculty of Science Academic Mentoring Program'
+        },
+        {
+            'id': 'P11',
+            'name': 'HDR'
+        },
+        {
+            'id': 'P12',
+            'name': 'FASS Student Partnership Program'
+        },
+        {
+            'id': 'P13',
+            'name': 'E12 Professional Mentoring Program'
+        },
+        {
+            'id': 'P15',
+            'name': 'Science UG Peer Mentoring'
+        },
+        {
+            'id': 'P16',
+            'name': 'ENGO Postgraduate Peer Mentoring Program'
+        },
+        {
+            'id': 'P14',
+            'name': 'Test Mentoring Program'
+        },
+
+    ];
+
+    function getUserSessionInformation() {
+        var regId = $(parent.document).find("#student-ID").text();
+        var eventID = $(parent.document).find("#uni-event-id").val();
+        // var eventID = $("#event-id").val();
+        var getSessionInformation = {
+            "url": `https://bwevents-products.com/swoogo-services/api/v1/swoogo/attendees/registrant/searchByField/${eventID}?fields=email,c_1419157&customField=c_1419157&searchValue=${regId}&account=universityofsydney`,
+            "method": "GET",
+            "timeout": 0,
+        };
+        $.ajax(getSessionInformation).done(function (response) {
+            console.log(response);
+            var response = JSON.parse(response);
+            if (response.items?.length > 0) {
+                $.each(response.items, function (index, item) {
+                    // $.each(item.sessions, function (index, session) {
+
+                    $(".show-if-registered span").html(`${item.email}`);
+                    $(".show-if-registered").removeClass("hidden");
+                    $(".show-if-not-registered").addClass("hidden");
+                    var div = $(`.register-button`).html(`Already Registered with <br/> Email: ${item.email}`);
+                    $(`.register-button`).addClass("disabled");
+                    $(`.register-button`).attr("disabled", "disabled");
+                    $(`.register-button`).removeAttr("href");
+                    $(".loader-icon").addClass("hidden");
+                    // });
+                });
+            }
+            $(".loader-icon").addClass("hidden");
+
+        }).fail(function (error) {
+            console.error(error);
+            $(".loader-icon").addClass("hidden");
+            return false;
+        });
+    }
+    getUserSessionInformation();
+
+    $(document).on("click", ".your-list", function () {
+        var parentURL = `https://welcome.sydney.edu.au/${masterURL}/agendas`;
+        window.parent.location.href = parentURL;
+    })
+</script>

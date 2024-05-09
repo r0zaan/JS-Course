@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #text-container {
+            font-size: 40px;
+        }
+
+        .container,
+        .new-container {
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="text-container">
+    </div>
+    <div class="container">
+        New container 1
+    </div>
+    <div class="container">
+        New container 2
+    </div>
+    <button id="animation-btn">Click event</button>
+    <!-- <form id="email-form">
+        <input type="email" id="email">
+        <button type="submit">Submit</button>
+    </form> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="./jquery/jquery-3.7.1.min.js"></script> -->
+    <script>
+        // document.getElementById("text-container").textContent = "Hello World!!";
+        // document.querySelector("#text-container").textContent = "Hello world 2!!";
+        // document.querySelector("#text-container").classList.add("text");
+
+        // $("#text-container").text("hello World 3").addClass("text");
+        // var newDiv = document.createElement("div");
+        // newDiv.textContent = "New div";
+        // document.querySelector("#text-container").appendChild(newDiv);
+        // $("#text-container").append("<div>New Div</div>");
+
+
+
+        // $(".container").addClass("new-container");
+
+        // document.getElementById("myButton").addEventListener("click", function () {
+        //     alert("Button clicked!");
+        // });
+
+        // $(".container").click(function () {
+        //     $(this).css({ "color": "red" })
+        //     // alert("test");
+        // });
+
+        $(document).on("click", "#animation-btn", function () {
+
+            if ($(".container").hasClass("clicked")) {
+                $(".container").slideUp(1000);
+                $(".container").removeClass("clicked");
+            } else {
+                $(".container").slideDown(1000);
+                $(".container").addClass("clicked");
+            }
+        });
+        $(".container").addClass("new-class").html("new text here").css({ "color": "blue", "font-size": "50px" }).fadeOut(5000);
+
+
+    </script>
+</body>
+
+</html>
